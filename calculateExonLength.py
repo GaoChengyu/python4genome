@@ -1,6 +1,6 @@
 import re
 import argparse
-
+#AUTHOR:GaoChengyu
 
 class EXON_CACULATE():
     def __init__(self,gff:str,output_txt:str):
