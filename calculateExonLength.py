@@ -67,7 +67,7 @@ class EXON_CACULATE():
             for str_ in exon_num_list:
                 if int(str_)>=10:
                     gt_sum+=1
-            cal_exon_num_dic['gt10']=gt_sum
+            cal_exon_num_dic['>10']=gt_sum
         output_txt=self.output_txt
         with open(output_txt,'w') as f:
             for key in cal_exon_num_dic.keys():
@@ -115,6 +115,11 @@ class EXON_CACULATE():
                 if int(length) >= start and int(length) <= end:
                     length_sum+=1
             exonlengthDistribution_dic[range_]=str(length_sum)
+        length_sum2=0
+        for length2 in exon_length_list:
+            if int(length2) > 4000:
+                length_sum2+=1
+        exonlengthDistribution_dic['>4000']=str(length_sum2)
         output_txt=self.output_txt
         with open(output_txt,'w') as f:
             for key in exonlengthDistribution_dic.keys():
