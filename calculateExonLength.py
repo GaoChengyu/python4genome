@@ -57,21 +57,22 @@ class EXON_CACULATE():
         cal_exon_num_dic={}
         if max_num<=10:
             for site in range(max_num):
-                exon_num=exon_num_list.count(str(site))
-                cal_exon_num_dic[max_num]=exon_num
+                exon_num=exon_num_list.count(str(site+1))
+                cal_exon_num_dic[str(site+1)]=exon_num
         else:
             for site in range(10):
-                exon_num=exon_num_list.count(str(site))
+                exon_num=exon_num_list.count(str(site+1))
                 cal_exon_num_dic[str(site+1)]=exon_num
             gt_sum=0
             for str_ in exon_num_list:
-                if int(str_)>=10:
+                if int(str_)>10:
                     gt_sum+=1
             cal_exon_num_dic['>10']=gt_sum
         output_txt=self.output_txt
         with open(output_txt,'w') as f:
             for key in cal_exon_num_dic.keys():
                 f.write(str(key)+'\t'+str(cal_exon_num_dic[key])+'\n')
+
 
 #计算外显子长度分布
     def make_exon_length_dic(self):
